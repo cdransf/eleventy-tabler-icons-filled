@@ -25,7 +25,7 @@ module.exports = function tablericons(eleventyConfig, config = initialConfig) {
     }`;
   }
 
-  eleventyConfig.addShortcode("tablericon", function (name, alt, attrs) {
+  eleventyConfig.addShortcode("tablericon-filled", function (name, alt, attrs) {
     return tablericons(this, name, alt, attrs);
   });
 };

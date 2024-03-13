@@ -7,7 +7,7 @@ Shortcodes to add [tabler icons](https://tabler-icons.io) to your [Eleventy](htt
 Install the package:
 
 ```sh
-npm i -D eleventy-plugin-tablericons
+npm i -D @cdransf/eleventy-tabler-icons-filled
 ```
 
 Then add the plugin to your `.eleventy.js` file:
@@ -15,23 +15,23 @@ Then add the plugin to your `.eleventy.js` file:
 ```js
 // .eleventy.js
 module.exports = eleventyConfig => {
-    eleventyConfig.addPlugin(require('eleventy-plugin-tablericons'));
+    eleventyConfig.addPlugin(require('@cdransf/eleventy-tabler-icons-filled'));
 }
 ```
 
 ## Usage
 
-This plugin adds the `tablericon` shortcode.
+This plugin adds the `tablericon-filled` shortcode.
 
 **Note**: These examples use Liquid template syntax, which is the default for Eleventy. If you are using another template engine like Nunjucks, the syntax might be slightly different.
 
-### `tablericon`
+### `tablericon-filled`
 
 Args: `name: string`, `alt?: string`
 
 ```md
-{% tablericon "archive" %}
-{% tablericon "x" "Close menu" %}
+{% tablericon-filled "archive" %}
+{% tablericon-filled "x" "Close menu" %}
 ```
 
 ## Configuration
@@ -46,7 +46,7 @@ Pass the configuration object when adding the plugin:
 ```js
 // .eleventy.js
 module.exports = eleventyConfig => {
-    eleventyConfig.addPlugin(require('eleventy-plugin-tablericons'), {
+    eleventyConfig.addPlugin(require('@cdransf/eleventy-tabler-icons-filled'), {
         className: 'icon',
         errorOnMissing: true
     });
