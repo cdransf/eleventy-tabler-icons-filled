@@ -1,0 +1,38 @@
+{
+  "name": "@cdransf/eleventy-tabler-icons-filled",
+  "version": "1.0.0",
+  "description": "Shortcodes to add filled Tabler icons to your Eleventy projects",
+  "main": "tablericons.js",
+  "files": [
+    "tablericons.js",
+    "icons.js"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "postversion": "git push && git push --tags"
+  },
+  "keywords": [
+    "eleventy-plugin",
+    "eleventy",
+    "plugin",
+    "tabler-icons"
+  ],
+  "author": {
+    "email": "coryd@hey.com",
+    "name": "Cory Dransfeldt",
+    "url": "https://coryd.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdransf/eleventy-tabler-icons-filled.git"
+  },
+  "homepage": "https://github.com/cdransf/eleventy-tabler-icons-filled#readme",
+  "bugs": {
+    "url": "https://github.com/cdransf/eleventy-tabler-icons-filled/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@tabler/icons": "^3.0.1"
+  }
+}

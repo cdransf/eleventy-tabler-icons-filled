@@ -1,0 +1,12 @@
+# build output
+node_modules/
+
+# logs
+*log
+*-error.log
+
+# IDE
+.idea
+
+# system
+.DS_Store
