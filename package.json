@@ -33,6 +33,6 @@
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@tabler/icons": "^3.11.0"
+    "@tabler/icons": "^3.12.0"
   }
 }
