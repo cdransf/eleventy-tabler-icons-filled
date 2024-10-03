@@ -13,9 +13,9 @@ try {
 
   fileNames.forEach((filename) => {
     const filePath = path.join(ICONS_DIR, filename)
-    const contents = readFileSync(filePath, 'utf8').trimEnd()
+    const contents = readFileSync(filePath, 'utf8').trim()
     const lines = contents.split('\n')
-    const guts = lines.slice(1, -1).join('').replace(/\s+/g, '')
+    const guts = lines.slice(1, -1).join(' ').replace(/\s{2,}/g, ' ')
 
     object[filename.slice(0, -4)] = guts
   })
