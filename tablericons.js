@@ -1,55 +1,48 @@
-const ICONS = require("./icons");
+import ICONS from './icons.js'
 
-const initialConfig = {
-  className: "",
-  errorOnMissing: false,
-};
+const tablericons = (eleventyConfig, config = {}) => {
+  const { className = '', errorOnMissing = false } = config
 
-module.exports = function tablericons(eleventyConfig, config = initialConfig) {
-  function tablericons(context = this, name, alt) {
-    const contents = ICONS[name];
+  const renderIcon = (context = this, name, alt, attrs) => {
+    const contents = ICONS[name]
     if (!contents) {
-      const message = `No tablericons found for name "${name}"`;
-      if (config.errorOnMissing) {
-        throw new Error(message);
-      } else {
-        console.warn(message + ` in ${context.page.inputPath}`);
-        return "";
-      }
+      handleMissingIcon(name, context.page.inputPath)
+      return ''
     }
 
-    if (!contents) return "";
-
-    return `${head(alt, config.className, name)}${contents}${
-      ICONS.TAIL
-    }`;
+    return `${head(alt, className, name, attrs)}${contents}${ICONS.TAIL}`
   }
 
-  eleventyConfig.addShortcode("tablericon-filled", function (name, alt, attrs) {
-    return tablericons(this, name, alt, attrs);
-  });
-};
-
-function head(alt, className, iconName, attrs) {
-  let output = ICONS.HEAD.slice(0, -1); // Open tag
-  if (!alt) output += ` aria-hidden="true"`;
-  if (className) output += ` class="${className}"`;
-  output += ` data-tablericon-name="${iconName}"`;
-
-  if (attrs) {
-    if (typeof attrs === "string") {
-      output += ` ${attrs}`;
+  const handleMissingIcon = (name, inputPath) => {
+    const message = `No tablericons found for name '${name}'`
+    if (errorOnMissing) {
+      throw new Error(message)
     } else {
-      Object.entries(attrs).forEach(([property, value]) => {
-        if (property && value) {
-          output += ` ${property}="${value}"`;
-        }
-      });
+      console.warn(`${message} in ${inputPath}`)
     }
   }
 
-  output += ">"; // Close tag
-  if (alt) output += `<title>${alt}</title>`;
-
-  return output;
+  // Register shortcode for Eleventy 3.0
+  eleventyConfig.addShortcode('tablericon', (name, alt, attrs) => {
+    return renderIcon(this, name, alt, attrs)
+  })
 }
+
+const head = (alt, className, iconName, attrs) => {
+  let output = `${ICONS.HEAD.slice(0, -1)} aria-hidden='true'`
+
+  if (className) output += ` class='${className}'`
+  output += ` data-tablericon-name='${iconName}'`
+
+  if (typeof attrs === 'string') {
+    output += ` ${attrs}`
+  } else if (attrs && typeof attrs === 'object') {
+    output += Object.entries(attrs)
+      .map(([property, value]) => (property && value ? ` ${property}='${value}'` : ''))
+      .join('')
+  }
+
+  return `${output}>`
+}
+
+export default tablericons
