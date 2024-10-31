@@ -1,6 +1,6 @@
 {
   "name": "@cdransf/eleventy-tabler-icons-filled",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Shortcodes to add filled Tabler icons to your Eleventy projects",
   "type": "module",
   "main": "tablericons.js",
